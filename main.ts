@@ -14,12 +14,14 @@ radio.onReceivedString(function (receivedString) {
     }
 })
 function straight (num: number) {
-    if (num > 0) {
-        pins.analogWritePin(AnalogPin.P0, num)
-        pins.analogWritePin(AnalogPin.P8, num)
+    if (num > 10) {
+        pins.analogWritePin(AnalogPin.P0, num * 2)
+        pins.analogWritePin(AnalogPin.P8, num * 2)
+    } else if (num < -10) {
+        pins.analogWritePin(AnalogPin.P16, num * -2)
+        pins.analogWritePin(AnalogPin.P12, num * -2)
     } else {
-        pins.analogWritePin(AnalogPin.P16, num * -1)
-        pins.analogWritePin(AnalogPin.P12, num * -1)
+        stop()
     }
 }
 let Pause = 0
